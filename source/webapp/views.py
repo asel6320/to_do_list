@@ -1,36 +1,25 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from webapp.article_db import ArticleDb
+from webapp.models import ToDoList, status_choices
 
 
 # Create your views here.
 def index(request):
-    print(request.GET.get("my_params"))
-    context = {
-        'name': 'john',
-        'age': 19,
-        'articles': ArticleDb.articles
-    }
-    return render(request, 'index.html', context=context)
+    to_do_list = ToDoList.objects.all()
+    return render(request, 'index.html', context={'to_do_list': to_do_list})
 
-def create_article(request):
+def create_task(request):
     if request.method == 'GET':
-        return render(request, 'create_article.html')
+        return render(request, 'create_task.html', context={"status_choices": status_choices})
     else:
-        title = request.POST.get("title")
-        content = request.POST.get("content")
-        author = request.POST.get("author")
-        ArticleDb.articles.append(
-            {
-                'title': title,
-                'content': content,
-                'author': author
-            }
+        ToDoList.objects.create(
+            description=request.POST.get("description"),
+            status = request.POST.get("status"),
+            deadline = request.POST.get("deadline"),
         )
+
         return HttpResponseRedirect('/')
-        #return render(request, 'article.html', context={
-        #    'title': title,
-        #    'content': content,
-        #    'author': author
-        #})
+
+def task_detail(request):
+    pass

@@ -5,15 +5,21 @@
     <title>Create</title>
 </head>
 <body>
-    <h1>Create Article</h1>
+
+    <h1>Create Task for Your To Do List</h1>
     <form action="/create/" method="post">
         {% csrf_token %}
-        <label>Title:</label><br/>
-        <input type="text" name="title"/><br/>
-        <label>Text:</label><br/>
-        <textarea name="content"></textarea><br/>
-        <label>Author:</label><br/>
-        <input type="text" name="author"/><br/>
+        <label>Description:</label><br/>
+        <input type="text" name="description"/><br/>
+        <label>Status:</label><br/>
+        <select name="status" id="">
+            {% for s in status_choices%}
+                <option value="{{ s.0 }}">{{ s.1 }}</option>
+            {% endfor %}
+        </select>
+        <br/>
+        <label for="deadline">Deadline:</label>
+        <input type="date" id="deadline" name="deadline"><br/>
         <br/>
         <input type="submit" value="Send"/>
     </form>
