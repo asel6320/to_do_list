@@ -1,47 +1,52 @@
 [
 {
-  "model": "webapp.todolist",
-  "pk": 2,
-  "fields": {
-    "description": "To apply for masters degree",
-    "status": "new",
-    "deadline": "2024-06-28"
-  }
+    "model": "webapp.todolist",
+    "pk": 2,
+    "fields": {
+        "description": "To apply for masters degree",
+        "status": "new",
+        "full_description": "It has been my dream since 18years old and this year I want to accomplish my dream and make it come true",
+        "deadline": "2024-06-28"
+    }
 },
 {
-  "model": "webapp.todolist",
-  "pk": 4,
-  "fields": {
-    "description": "To buy products",
-    "status": "in_progress",
-    "deadline": "2024-06-24"
-  }
+    "model": "webapp.todolist",
+    "pk": 4,
+    "fields": {
+        "description": "To buy products",
+        "status": "in_progress",
+        "full_description": "I was hungry for 100days and in order not to be dead I will go and buy products today",
+        "deadline": "2024-06-24"
+    }
 },
 {
-  "model": "webapp.todolist",
-  "pk": 5,
-  "fields": {
-    "description": "To wash car",
-    "status": "new",
-    "deadline": "2024-06-28"
-  }
+    "model": "webapp.todolist",
+    "pk": 5,
+    "fields": {
+        "description": "To wash car",
+        "status": "new",
+        "full_description": "My boyfriend is being angry because i crashed his car and therefore I need to wash it again",
+        "deadline": "2024-06-28"
+    }
 },
 {
-  "model": "webapp.todolist",
-  "pk": 6,
-  "fields": {
-    "description": "To feed a cat",
-    "status": "new",
-    "deadline": "2024-06-26"
-  }
+    "model": "webapp.todolist",
+    "pk": 6,
+    "fields": {
+        "description": "To feed a cat",
+        "status": "new",
+        "full_description": "I fed the cat but need to feed a cat again",
+        "deadline": "2024-06-26"
+    }
 },
 {
-  "model": "webapp.todolist",
-  "pk": 7,
-  "fields": {
-    "description": "To change the passport",
-    "status": "in_progress",
-    "deadline": "2024-06-28"
-  }
+    "model": "webapp.todolist",
+    "pk": 7,
+    "fields": {
+        "description": "To change the passport",
+        "status": "in_progress",
+        "full_description": "It should be done by 28th of June to get the work done from the embassy",
+        "deadline": "2024-06-28"
+    }
 }
 ]

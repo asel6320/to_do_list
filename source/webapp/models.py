@@ -5,10 +5,11 @@ status_choices = [('new', 'New'), ('in_progress', 'In progress'),  ('done', 'Don
 class ToDoList(models.Model):
     description = models.TextField(max_length=500, null=False, blank=False, verbose_name="Description")
     status = models.CharField(max_length=50, null=False, blank=False, verbose_name="Status", default='new', choices=status_choices)
+    full_description = models.TextField(max_length=500, null=True, blank=True, verbose_name="Full Description")
     deadline = models.DateField(auto_now=False, verbose_name="Deadline")
 
     def __str__(self):
-        return f"{self.pk}. {self.description}: {self.status} - {self.deadline}"
+        return f"{self.pk}. {self.description}: {self.status} |{self.full_description}| - {self.deadline}"
 
     class Meta:
         db_table = 'toDoList'

@@ -1,5 +1,5 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponseNotFound
+from django.shortcuts import render, redirect, get_object_or_404
 
 from webapp.models import ToDoList, status_choices
 
@@ -13,13 +13,15 @@ def create_task(request):
     if request.method == 'GET':
         return render(request, 'create_task.html', context={"status_choices": status_choices})
     else:
-        ToDoList.objects.create(
+        task = ToDoList.objects.create(
             description=request.POST.get("description"),
             status = request.POST.get("status"),
+            full_description = request.POST.get("full_description"),
             deadline = request.POST.get("deadline"),
         )
 
-        return HttpResponseRedirect('/')
+        return redirect("task_detail", pk=task.pk)
 
-def task_detail(request):
-    pass
+def task_detail(request, *args, pk, **kwargs):
+    task = get_object_or_404(ToDoList, pk=pk)
+    return render(request, 'task_detail.html', context={"task": task})
