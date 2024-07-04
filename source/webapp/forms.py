@@ -9,7 +9,7 @@ class TaskForm(forms.Form):
         choices=status_choices,
         required=True,
         label="status",
-        widget=forms.Select(attrs={'class': 'form-control select2'})
+        widget=forms.Select(attrs={'class': 'form-control select2', 'style': 'width: 200px;'})
     )
     full_description = forms.CharField(
         max_length=3000,

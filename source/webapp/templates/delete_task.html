@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        Are you sure you want to delete {{ task.description }}?
+        <br>
+        <button type="submit">yes</button>
+    </form>
+    <a href="{% url "tasks" %}">No</a>
+{% endblock %}

@@ -82,4 +82,9 @@ def update_task(request, *args, pk, **kwargs):
             )
 
 def delete_task(request, *args, pk, **kwargs):
-    pass
+    task = get_object_or_404(ToDoList, pk=pk)
+    if request.method == "GET":
+        return render(request, "delete_task.html", context={"task": task})
+    else:
+        task.delete()
+        return redirect("tasks")
