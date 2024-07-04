@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-    <title>Articles</title>
+    <title>Tasks</title>
 {% endblock %}
 
 {% block content %}
@@ -15,6 +15,8 @@
                 <h6 class="card-subtitle mb-2 text-muted">Status: {{ task.status }}</h6>
                 <p class="card-text">Deadline: {{ task.deadline }}</p>
                 <a href="{% url 'task_detail' task.pk %}" class="card-link">Detail view</a>
+                  <a href="{% url 'delete_task' task.pk %}" class="card-link">Delete</a>
+                  <a href="{% url 'update_task' task.pk %}" class="card-link">Update</a>
               </div>
             </div>
         </div>
