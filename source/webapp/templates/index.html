@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block content %}
-    <br>
+<form method="post" action="{% url 'delete_tasks' %}">
+{% csrf_token %}    
 <div class="row">
     {% for task in to_do_list %}
         <div class="col-12 col-md-6 col-lg-4">
@@ -17,9 +18,12 @@
                 <a href="{% url 'task_detail' task.pk %}" class="card-link">Detail view</a>
                   <a href="{% url 'delete_task' task.pk %}" class="card-link">Delete</a>
                   <a href="{% url 'update_task' task.pk %}" class="card-link">Update</a>
+                  <input type="checkbox" name="tasks_to_delete" value="{{ task.pk }}">
               </div>
             </div>
         </div>
     {% endfor %}
 </div>
+<button type="submit" class="btn btn-danger mt-3">Delete Selected Tasks</button>
+    </form>
 {% endblock %}

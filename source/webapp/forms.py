@@ -1,6 +1,8 @@
 from django import forms
 from django.forms import widgets
 
+from webapp.models import ToDoList
+
 status_choices = [('new', 'New'), ('in_progress', 'In progress'),  ('done', 'Done')]
 
 class TaskForm(forms.Form):
@@ -23,5 +25,14 @@ class TaskForm(forms.Form):
         widget=forms.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
         input_formats=["%Y-%m-%d"]
     )
+
+class TaskDeleteForm(forms.Form):
+    tasks = forms.ModelMultipleChoiceField(
+        queryset=ToDoList.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True,
+        label="Select tasks to delete"
+    )
+
 
 

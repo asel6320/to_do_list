@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render, redirect, get_object_or_404
 
 from webapp.models import ToDoList, status_choices
-from webapp.forms import TaskForm
+from webapp.forms import TaskForm, TaskDeleteForm
 from webapp.validate import task_validate
 
 # Create your views here.
@@ -88,3 +88,15 @@ def delete_task(request, *args, pk, **kwargs):
     else:
         task.delete()
         return redirect("tasks")
+
+def delete_tasks(request):
+    if request.method == 'POST':
+        form = TaskDeleteForm(request.POST)
+        if form.is_valid():
+            tasks_to_delete = form.cleaned_data['tasks']
+            tasks_to_delete.delete()
+            return redirect('tasks')  # Redirect to task list view
+    else:
+        form = TaskDeleteForm()
+
+    return render(request, 'delete_tasks.html', {'form': form})
