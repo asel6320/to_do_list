@@ -1,8 +1,7 @@
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render, redirect, get_object_or_404
 
-from webapp.models import ToDoList, status_choices
-from webapp.forms import TaskForm, TaskDeleteForm
+from webapp.models import ToDoList
 from webapp.validate import task_validate
 
 # Create your views here.
